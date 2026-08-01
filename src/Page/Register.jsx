@@ -1,15 +1,28 @@
+import { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
 
 
 const Register = () => {
+    const { createUser } = use(AuthContext);
 
     const handleRegister = (e)=>{
         e.preventDefault();
         const name = e.target.name.value;
         const photo = e.target.photo.value;
         const email = e.target.email.value;
-        const pass = e.target.pass.value;
-        console.log({name,photo,email,pass})
+        const password = e.target.password.value;
+        console.log({ name, photo, email, password });
+
+        createUser(email, password)
+          .then(() => {
+            alert("register successful");
+          })
+          .catch((error) => {
+            // const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage)
+          });
     }
 
     return (
@@ -48,7 +61,7 @@ const Register = () => {
               <label className="label mt-2">Password</label>
               <input
                 type="password"
-                name="pass"
+                name="password"
                 className="input w-full"
                 placeholder="Enter Your Password"
                 required
