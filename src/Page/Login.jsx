@@ -1,0 +1,50 @@
+
+import { Link } from "react-router";
+
+
+
+const Login = () => {
+
+   
+    return (
+      <div className="flex justify-center items-center min-h-[80vh] mt-5">
+        <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl p-8">
+          <h2 className="font-semibold text-2xl text-accent-content text-center mb-0">
+            Login your account
+          </h2>
+          <div className="card-body">
+            <div className="divider mt-0 mb-2"></div>
+            <fieldset className="fieldset">
+              <label className="label">Email</label>
+              <input
+                type="email"
+                className="input w-full"
+                placeholder="Enter Your Email"
+              />
+              <label className="label mt-2">Password</label>
+              <input
+                type="password"
+                className="input w-full"
+                placeholder="Enter Your Password"
+              />
+              <div>
+                <a className="link link-hover">Forgot password?</a>
+              </div>
+              <button className="btn btn-primary mt-4">Login</button>
+              <p className="mt-2 text-center text-sm">
+                Dont’t Have An Account ?{" "}
+                <Link
+                  className="text-secondary hover:underline"
+                  to={"/auth/register"}
+                >
+                  Register
+                </Link>
+              </p>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    );
+};
+
+export default Login;
