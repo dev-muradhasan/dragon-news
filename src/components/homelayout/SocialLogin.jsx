@@ -4,10 +4,10 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 const SocialLogin = () => {
     return (
       <div>
-        <h2 className="font-semibold text-xl text-accent-content">
+        <h2 className="font-semibold text-xl text-accent-content mb-3">
           Login With
         </h2>
-        <div className="space-y-3 mt-3">
+        <div className="space-y-3">
           <button className="btn btn-outline btn-secondary w-full">
             <FaGoogle size={20} />
             Login With Google

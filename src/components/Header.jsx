@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 const Header = () => {
   return (
     <div>
-      <div className="flex flex-col justify-center items-center mt-8 space-y-1">
+      <div className="flex flex-col justify-center items-center mt-5 space-y-1">
         <img className="w-96" src={logo} alt="" />
         <p className="text-accent text-lg">Journalism Without Fear or Favour</p>
         <div className="text-xl font-medium">
