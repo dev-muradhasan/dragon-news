@@ -18,7 +18,7 @@ const NewsDetailsCard = () => {
     <div className="card bg-base-100 border border-base-300 shadow-sm p-5">
       {/* News Image */}
       <figure className="rounded-lg overflow-hidden">
-        <img src={image_url} alt={title} className="w-full h-95 object-cover" />
+        <img src={image_url} alt={title} className="w-full h-100 object-cover" />
       </figure>
 
       {/* Content */}
