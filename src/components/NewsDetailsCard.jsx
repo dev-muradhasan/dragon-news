@@ -23,7 +23,7 @@ const NewsDetailsCard = () => {
 
       {/* Content */}
       <div className="mt-8">
-        <h2 className="text-3xl text-accent-content font-semibold leading-snug">
+        <h2 className="text-3xl text-accent-content font-bold leading-snug">
           {title}
         </h2>
 

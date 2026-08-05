@@ -10,20 +10,24 @@ import { auth } from "../Firebase/Firebase.config";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const logOutUser = () => {
     return signOut(auth);
   };
   const loginUser = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false)
     });
     return () => {
       unsubscribe();
@@ -36,6 +40,8 @@ const AuthProvider = ({ children }) => {
     createUser,
     logOutUser,
     loginUser,
+    loading,
+    setLoading,
   };
 
   return <AuthContext value={authData}>{children}</AuthContext>;

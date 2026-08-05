@@ -2,11 +2,8 @@
 import { FaEye, FaStar, FaRegBookmark, FaShareAlt } from "react-icons/fa";
 import { format } from "date-fns";
 import { Link } from "react-router";
-import { useContext } from "react";
-import { AuthContext } from "../../provider/AuthContext";
 
 const NewsCard = ({ news }) => {
-  const {user} = useContext(AuthContext);
   const {id, title, rating, total_view, author, image_url, details } = news;
 
   return (
@@ -63,7 +60,7 @@ const NewsCard = ({ news }) => {
             {details?.slice(0, 250)}...
           </p>
 
-          <Link to={user? `/news-details/${id}` : `/auth/login`} className="text-orange-500 font-medium text-sm mt-1 hover:underline cursor-pointer">
+          <Link to={`/news-details/${id}`} className="text-orange-500 font-medium text-sm mt-1 hover:underline cursor-pointer">
             Read More
           </Link>
         </div>
