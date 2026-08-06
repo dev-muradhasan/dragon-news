@@ -23,5 +23,5 @@
 }
 
 a.active {
-    @apply bg-base-300 text-accent-content
+    @apply text-accent-content
 }

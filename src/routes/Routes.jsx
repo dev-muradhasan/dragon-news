@@ -8,6 +8,8 @@ import Register from "../Page/Register";
 import NewsDetails from "../Page/NewsDetails";
 import PrivateRoute from "./PrivateRoute";
 import Loading from "../Page/Loading";
+import About from "../Page/About";
+import Career from "../Page/Career";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,8 @@ const router = createBrowserRouter([
     ),
     hydrateFallbackElement: <Loading></Loading>,
   },
+  {path: '/about', element: <About></About>},
+  {path: '/career', element: <Career></Career>},
 ]);
 
 
