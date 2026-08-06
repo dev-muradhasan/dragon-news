@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   };
   const updateUserProfile = ({ userData }) => {
     setLoading(true);
-    console.log(userData)
+    // console.log(userData)
     return updateProfile(auth.currentUser, (userData));
   };
   const logOutUser = () => {
