@@ -3,12 +3,58 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 
 const Register = () => {
-  const { createUser, user, setUser, updateProfileFunc, setLoading } =
-    use(AuthContext);
+  const {
+    createUser,
+    logOutUser,
+    setUser,
+    updateProfileFunc,
+    setLoading,
+    emailVerification,
+  } = use(AuthContext);
   const navigate = useNavigate();
 
+  // const handleRegister = (e) => {
+  //   e.preventDefault();
+  //   const displayName = e.target.name.value;
+  //   const photoURL = e.target.photo.value;
+  //   const email = e.target.email.value;
+  //   const password = e.target.password.value;
+
+  //   createUser(email, password)
+  //     .then(() => {
+  //       updateProfileFunc(displayName, photoURL)
+  //         .then(() => {
+  //           emailVerification()
+  //             .then(() => {
+  //               setLoading(false);
+  //               logOutUser()
+  //                 .then(() => {
+  //                   alert("sign up successful. please check your email");
+  //                   setUser(null)
+  //                 })
+  //                 .catch((err) => {
+  //                   console.log(err.message);
+  //                 });
+  //                 navigate('/auth/login')
+  //             })
+  //             .catch((err) => {
+  //               console.log(err.message);
+  //             });
+  //         })
+  //         .catch((err) => {
+  //           alert(err.message);
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       // const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       console.log(errorMessage);
+  //     });
+  // };
+  
   const handleRegister = (e) => {
     e.preventDefault();
+
     const displayName = e.target.name.value;
     const photoURL = e.target.photo.value;
     const email = e.target.email.value;
@@ -16,20 +62,26 @@ const Register = () => {
 
     createUser(email, password)
       .then(() => {
-        updateProfileFunc(displayName, photoURL)
-          .then(() => {
-            setLoading(false);
-            setUser({ ...user, displayName, photoURL});
-            navigate("/");
-          })
-          .catch((err) => {
-            alert(err.message);
-          });
+        return updateProfileFunc(displayName, photoURL);
+      })
+      .then(() => {
+        return emailVerification();
+      })
+      .then(() => {
+        return logOutUser();
+      })
+      .then(() => {
+        setUser(null);
+        setLoading(false);
+
+        alert("Sign up successful. Please check your email.");
+
+        navigate("/auth/login");
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
+        setLoading(false);
+        console.log(error.message);
+        alert(error.message);
       });
   };
 

@@ -7,16 +7,20 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-    const { loginUser , setLoading } = use(AuthContext);
+    const { loginUser } = use(AuthContext);
+
     const handleSignIn = (e)=>{
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         loginUser(email, password)
-          .then(() => {
-            setLoading(false);
-            navigate(location.state || '/')
+          .then((result) => {
+            if (!result.user.emailVerified) {
+              alert("Please verify your email!");
+              return;
+            }
             alert("user sign in successful");
+            navigate(location.state || "/");
           })
           .catch((error) => {
             // const errorCode = error.code;
@@ -24,7 +28,27 @@ const Login = () => {
             console.log(errorMessage);
           });
     }
+  // const handleSignIn = (e) => {
+  //   e.preventDefault();
 
+  //   const email = e.target.email.value;
+  //   const password = e.target.password.value;
+
+  //   loginUser(email, password)
+  //     .then((result) => {
+  //       if (!result.user.emailVerified) {
+  //         alert("Please verify your email!");
+  //         return;
+  //       }
+
+  //       alert("User sign in successful");
+
+  //       navigate(location.state || "/");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // };
    
     return (
       <div className="flex justify-center items-center min-h-[80vh] mt-5">

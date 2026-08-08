@@ -20,7 +20,9 @@ const Navbar = () => {
 
   return (
     <div className="grid grid-cols-3 items-center">
-      <div className="text-accent-content font-semibold col-span-1"></div>
+      <div className="text-accent-content font-semibold col-span-1">
+        {user?.displayName || ''}
+      </div>
       <div className="text-accent text-lg flex gap-5 col-span-1 justify-center">
         <NavLink to={"/"}>Home</NavLink>
         <NavLink to={"/about"}>About</NavLink>
