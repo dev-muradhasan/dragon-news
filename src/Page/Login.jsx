@@ -2,6 +2,7 @@
 import { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const location = useLocation();
@@ -16,16 +17,16 @@ const Login = () => {
         loginUser(email, password)
           .then((result) => {
             if (!result.user.emailVerified) {
-              alert("Please verify your email!");
+              toast.warn("Please verify your email!");
               return;
             }
-            alert("user sign in successful");
+            toast.success("Sign in successful");
             navigate(location.state || "/");
           })
           .catch((error) => {
             // const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorMessage);
+            toast.error(errorMessage);
           });
     }
   // const handleSignIn = (e) => {

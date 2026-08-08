@@ -3,18 +3,17 @@ import userIcon from "../assets/user.png";
 import { use } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { ClockLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOutUser,loading } = use(AuthContext);
   const handleLogOut = () => {
     logOutUser()
       .then(() => {
-        alert("log out successful");
+        toast.warn("Logout successful");
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
+        toast.error(error.message);
       });
   };
 

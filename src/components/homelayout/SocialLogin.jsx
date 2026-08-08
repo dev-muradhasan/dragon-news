@@ -1,6 +1,7 @@
 import { use } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthContext";
+import { toast } from "react-toastify";
 
 const SocialLogin = () => {
   const { googleSignIn, githubSignIn, setLoading } = use(AuthContext);
@@ -9,20 +10,20 @@ const SocialLogin = () => {
     googleSignIn().then(res=>{
       // console.log(res.user)
        setLoading(false);
-      alert('login with google successful')
+      toast.success('Login with google successful')
     })
     .catch(err=>{
-      console.log(err)
+      toast.error(err.message);
     })
   };
  const handleGithubSignIn = () => {
    githubSignIn()
      .then((res) => {
        setLoading(false);
-       alert("Login with GitHub successful");
+       toast.success("Login with GitHub successful");
      })
      .catch((err) => {
-       alert(err.message);
+       toast.error(err.message);
      });
  };
 

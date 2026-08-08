@@ -1,6 +1,7 @@
 import { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const {
@@ -74,14 +75,14 @@ const Register = () => {
         setUser(null);
         setLoading(false);
 
-        alert("Sign up successful. Please check your email.");
+        toast.success("Sign up successful. Please check your email.");
 
         navigate("/auth/login");
       })
       .catch((error) => {
         setLoading(false);
         console.log(error.message);
-        alert(error.message);
+        toast.error(error.message);
       });
   };
 
