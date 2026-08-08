@@ -7,13 +7,14 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-    const { loginUser } = use(AuthContext);
+    const { loginUser , setLoading } = use(AuthContext);
     const handleSignIn = (e)=>{
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         loginUser(email, password)
           .then(() => {
+            setLoading(false);
             navigate(location.state || '/')
             alert("user sign in successful");
           })
@@ -23,6 +24,7 @@ const Login = () => {
             console.log(errorMessage);
           });
     }
+
    
     return (
       <div className="flex justify-center items-center min-h-[80vh] mt-5">
