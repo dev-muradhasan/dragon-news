@@ -3,7 +3,7 @@ import MarqueeModule from "react-fast-marquee";
 
 const Marquee = MarqueeModule.default || MarqueeModule;
 
-const heading = fetch('/public/news.json').then(res=>res.json());
+const heading = fetch('/news.json').then(res=>res.json());
 
 const LatestNews = () => {
   const headerData = use(heading);
