@@ -61,29 +61,50 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    createUser(email, password)
-      .then(() => {
-        return updateProfileFunc(displayName, photoURL);
-      })
-      .then(() => {
-        return emailVerification();
-      })
-      .then(() => {
-        return logOutUser();
-      })
-      .then(() => {
-        setUser(null);
-        setLoading(false);
+    // createUser(email, password)
+    //   .then(() => {
+    //     return updateProfileFunc(displayName, photoURL);
+    //   })
+    //   .then(() => {
+    //     setLoading(false);
+    //     return emailVerification();
+    //   })
+    //   .then(() => {
+    //     return logOutUser();
+    //   })
+    //   .then(() => {
+    //     setUser(null);
+    //     toast.success("Sign up successful. Please check your email.");
+    //     navigate("/auth/login");
+    //   })
+    //   .catch((error) => {
+    //     setLoading(false);
+    //     console.log(error.message);
+    //     toast.error(error.message);
+        
+    //   });
 
-        toast.success("Sign up successful. Please check your email.");
-
-        navigate("/auth/login");
+      createUser(email, password)
+      .then(()=>{
+        updateProfileFunc(displayName, photoURL)
+          .then(()=>{
+            emailVerification()
+              .then(()=>{
+                setLoading(false)
+                logOutUser()
+                  .then(() => {
+                    toast.success(
+                      "Sign up successful. Check your email to active your account.",
+                    );
+                    setUser(null)
+                  })
+                  navigate("/auth/login");
+              })
+              .catch((error) => toast.error(error.message));
+          })
+          .catch((error) => toast.error(error.message));
       })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error.message);
-        toast.error(error.message);
-      });
+      .catch(error=>toast.error(error.message))
   };
 
   return (

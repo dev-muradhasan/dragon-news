@@ -8,7 +8,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-    const { loginUser } = use(AuthContext);
+    const { loginUser, logOutUser } = use(AuthContext);
 
     const handleSignIn = (e)=>{
         e.preventDefault();
@@ -18,7 +18,7 @@ const Login = () => {
           .then((result) => {
             if (!result.user.emailVerified) {
               toast.warn("Please verify your email!");
-              return;
+              return logOutUser();
             }
             toast.success("Sign in successful");
             navigate(location.state || "/");
