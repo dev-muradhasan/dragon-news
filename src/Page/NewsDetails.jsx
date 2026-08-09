@@ -6,6 +6,7 @@ import MyContainer from "../components/MyContainer";
 import NewsDetailsCard from "../components/NewsDetailsCard";
 
 const NewsDetails = () => {
+
   return (
     <MyContainer>
       <header>
@@ -17,7 +18,7 @@ const NewsDetails = () => {
           <NewsDetailsCard></NewsDetailsCard>
         </section>
         <aside className="col-span-3 space-y-8">
-          <SocialLogin></SocialLogin>
+          {/* <SocialLogin></SocialLogin> */}
           <FindUsOn></FindUsOn>
           <Qzone></Qzone>
         </aside>
