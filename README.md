@@ -16,5 +16,5 @@ A dynamic and responsive news portal application built with React. Users can exp
 **🛠️ Technologies:**
 React.js, React Router, JavaScript (ES6+), Firebase Authentication, Tailwind CSS.
 
-- 🔗 **Live Demo:** [https://dragon-news-79a17.web.app](#)
-- 💻 **GitHub Repository:** [https://github.com/dev-muradhasan/dragon-news](#)
+- 🔗 **Live Demo:** [https://dragon-news-79a17.web.app]
+- 💻 **GitHub Repository:** [https://github.com/dev-muradhasan/dragon-news]
